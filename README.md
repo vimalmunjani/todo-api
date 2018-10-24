@@ -1,6 +1,6 @@
 # todo-api
 
-A simple and foundation level with showcase of Promises and Async/wait implementation of REST Api for Todos
+A simple and foundation level implementation of REST Api for Todos with showcase of Promises and Async/wait 
 
 # Deployed on Heroku -
 
