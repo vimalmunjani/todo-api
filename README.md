@@ -4,4 +4,4 @@ A simple and foundation level implementation of REST Api for Todos with showcase
 
 # Deployed on Heroku -
 
-URL - https://todo-app-server-v.herokuapp.com/todo
+URL - https://todo-app-server-v.herokuapp.com/api/todos
