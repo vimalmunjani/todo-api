@@ -8,6 +8,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.use('api/todo',todoRouter);
+router.use('api/todos',todoRouter);
 
 module.exports = router;
