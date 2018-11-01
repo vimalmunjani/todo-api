@@ -151,7 +151,7 @@ exports.deleteTodo = function(id){
 
 return new Promise((resolve, reject) => {
 
-    Todo.deleteOne({ _id: id })
+    Todo.findByIdAndDelete(id)
     .then((deletedTodo) => {
         log(`Todo Deletion successful -- ${deletedTodo}`);
         resolve(deletedTodo);

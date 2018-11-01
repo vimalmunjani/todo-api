@@ -3,13 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // Database Configuration
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://todo:todotodo1@ds229690.mlab.com:29690/todoapp',{ useNewUrlParser: true })
+
+const db_uri = `mongodb://todo:todotodo1@starter-cluster-shard-00-00-mzdjw.mongodb.net:27017,starter-cluster-shard-00-01-mzdjw.mongodb.net:27017,starter-cluster-shard-00-02-mzdjw.mongodb.net:27017/test?ssl=true&replicaSet=Starter-Cluster-shard-0&authSource=admin&retryWrites=true`;
+const options = {
+  useNewUrlParser: true,
+  // reconnectTries: Number.MAX_VALUE,
+  // poolSize: 10
+};
+
+mongoose.connect(db_uri, options)
         .then(() => {
           console.log('connected to DB');
         })
