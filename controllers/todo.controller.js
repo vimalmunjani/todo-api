@@ -124,7 +124,8 @@ exports.updateTodo =async function(req, res, next){
         status: req.body.status
     }
 
-    log(todo);
+    
+    log(JSON.stringify(todo));
 
     try{
 
