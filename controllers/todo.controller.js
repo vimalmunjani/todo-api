@@ -113,6 +113,8 @@ exports.updateTodo =async function(req, res, next){
         status: req.body.status
     }
 
+    console.log(todo);
+
     try{
 
         let updateTodo =await TodoService.updateTodo(todo);
