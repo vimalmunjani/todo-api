@@ -120,7 +120,7 @@ exports.updateTodo =async function(req, res, next){
     let todo = {
         id: req.body.id,
         title: req.body.title,
-        description: req.body.description,
+        description: req.body.description ? req.body.description :'No description',
         status: req.body.status
     }
 
@@ -129,7 +129,7 @@ exports.updateTodo =async function(req, res, next){
 
     try{
 
-        let updateTodo =await TodoService.updateTodo(todo);
+        let updateTodo = await TodoService.updateTodo(todo);
 
         log('todo found');
 
@@ -141,7 +141,7 @@ exports.updateTodo =async function(req, res, next){
 
     }catch(e){
 
-        console.log(e.message);
+        log(`todo not found`);
 
         res.status(400).json({
             status: 400,
