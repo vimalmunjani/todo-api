@@ -1,4 +1,9 @@
 const TodoService = require('../services/todo.service');
+const logger = require('../utils/logger');
+
+let log = (message) => {
+    logger(__filename, message);
+}
 
 // GET Todos - GET Method
 exports.getTodos = function(req, res, next){
@@ -96,7 +101,11 @@ exports.createTodo = function(req, res, next){
 // UPDATE Todo - PUT Method
 exports.updateTodo =async function(req, res, next){
 
+    log('entering update todo');
+
     if(!req.body.id){
+
+        log(`no id param found`);
 
         res.status(400).json({
             status: 400,
@@ -106,6 +115,8 @@ exports.updateTodo =async function(req, res, next){
 
     }
 
+    log(`reading id from req body ${req.body.id} `)
+
     let todo = {
         id: req.body.id,
         title: req.body.title,
@@ -113,11 +124,13 @@ exports.updateTodo =async function(req, res, next){
         status: req.body.status
     }
 
-    console.log(todo);
+    log(todo);
 
     try{
 
         let updateTodo =await TodoService.updateTodo(todo);
+
+        log('todo found');
 
         res.status(200).json({
             status: 200,
