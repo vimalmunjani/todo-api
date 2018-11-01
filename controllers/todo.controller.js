@@ -103,7 +103,7 @@ exports.updateTodo =async function(req, res, next){
 
     log('entering update todo');
 
-    if(!req.body.id){
+    if(!req.params.id){
 
         log(`no id param found`);
 
@@ -115,10 +115,10 @@ exports.updateTodo =async function(req, res, next){
 
     }
 
-    log(`reading id from req body ${req.body.id} `)
+    log(`reading id from req body ${req.params.id} `)
 
     let todo = {
-        id: req.body.id,
+        id: req.params.id,
         title: req.body.title,
         description: req.body.description ? req.body.description :'No description',
         status: req.body.status
