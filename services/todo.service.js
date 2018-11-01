@@ -91,7 +91,7 @@ exports.updateTodo = async function(todo){
 
     try{
         log(`todo.id - ${ todo.id }`);
-        foundTodo = await Todo.findById('5bd0296b9d43d60015c00d4d');
+        foundTodo = await Todo.findById(todo.id);
         log(`todo found - ${ JSON.stringify(foundTodo) }`);
     }catch(e){
 
@@ -153,10 +153,10 @@ return new Promise((resolve, reject) => {
 
     Todo.findByIdAndRemove(id)
     .then((deletedTodo) => {
-        console.log(`Todo Deletion successful -- ${deletedTodo}`);
+        log(`Todo Deletion successful -- ${deletedTodo}`);
         resolve(deletedTodo);
     }).catch((error) => {
-        console.log(`Error deleting Todo ${error.message}`);
+        log(`Error deleting Todo ${error.message}`);
         reject(new Error('Error Deleting Todo'));
     });
 

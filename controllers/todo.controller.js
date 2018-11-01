@@ -163,7 +163,10 @@ exports.deleteTodo = async function(req, res, next){
     }
     
     try{
+
         let deleteTodo = await TodoService.deleteTodo(req.params.id);
+
+        log(`todo deleted`);
 
         res.status(200).json({
             status: 200,
@@ -172,6 +175,8 @@ exports.deleteTodo = async function(req, res, next){
         });
 
     }catch(e){
+
+        log(`todo not deleted`);
 
         res.status(400).json({
             status: 400,
