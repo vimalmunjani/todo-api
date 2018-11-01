@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 
 // Database Configuration
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://todo:todotodo1@ds229690.mlab.com:29690/todoapp',{ useNewUrlParser: true, useMongoClient: true })
+mongoose.connect('mongodb://todo:todotodo1@ds229690.mlab.com:29690/todoapp',{ useNewUrlParser: true })
         .then(() => {
           console.log('connected to DB');
         })
