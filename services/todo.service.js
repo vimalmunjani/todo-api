@@ -1,5 +1,9 @@
 const Todo = require('../models/todo.model');
+const logger = require('../utils/logger');
 
+let log = (message) => {
+    logger(__filename, message);
+}
 // GET TODOs
 exports.getTodos = function(){
 
@@ -86,9 +90,13 @@ exports.updateTodo = async function(todo){
     let foundTodo, updateTodo;
 
     try{
+        log(`todo.id - ${ todo.id }`);
         foundTodo = await Todo.findById(todo.id);
+        log(`todo found - ${ JSON.stringify(foundTodo) }`);
     }catch(e){
-        throw Error('Error ocurred while finding Todo');
+
+        log(`todo not found`);
+        throw Error('Error ocurred while finding Todo');   
     }
 
     foundTodo.title = todo.title;
@@ -97,7 +105,9 @@ exports.updateTodo = async function(todo){
 
     try{
         updateTodo = await foundTodo.save();
+        log(`todo updated - ${ JSON.stringify(updateTodo)}`);
     }catch(e){
+        log(`todo not updated`)
         throw Error('Error updating Todo');
     }
 
