@@ -86,12 +86,11 @@ exports.createTodo = function(todo){
 // UPDATE TODO
 exports.updateTodo = async function(todo){
 
-    let oldTodo, newTodo;
     let foundTodo, updateTodo;
 
     try{
-        log(`todo.id - ${ todo.id }`);
-        foundTodo = await Todo.findById(todo.id);
+        log(`todo.id - ${ todo._id }`);
+        foundTodo = await Todo.findById(todo._id);
         log(`todo found - ${ JSON.stringify(foundTodo) }`);
     }catch(e){
 
@@ -106,12 +105,13 @@ exports.updateTodo = async function(todo){
     try{
         updateTodo = await foundTodo.save();
         log(`todo updated - ${ JSON.stringify(updateTodo)}`);
+        return updateTodo;
     }catch(e){
         log(`todo not updated`)
         throw Error('Error updating Todo');
     }
 
-    return updateTodo;
+    
 
     // Todo.findById(oldTodoId)
     //                   .then((result) => {
